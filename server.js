@@ -62,5 +62,13 @@ module.exports = async () => {
     });
 
   const io = require("socket.io")(server);
-  io.on("connection", () => {});
+  io.on("connection", (socket) => {
+    const address = socket.request.connection.remoteAddress;
+    console.log(`New Connection from ${address}`);
+  });
+  tw.track("socket.io");
+  tw.track("javascript");
+  tw.on("tweet", (tweet) => {
+    io.emit("tweet", tweet);
+  });
 };
