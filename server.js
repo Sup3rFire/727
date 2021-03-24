@@ -64,10 +64,14 @@ module.exports = async () => {
   const io = require("socket.io")(server);
   io.on("connection", (socket) => {
     const address = socket.request.connection.remoteAddress;
-    console.log(`New Connection from ${address}`);
+    console.log(
+      `New Connection from ${
+        socket.client.request.headers["cf-connecting-ip"] || address
+      }`
+    );
   });
-  tw.track("socket.io");
   tw.track("javascript");
+  tw.track("aireu");
   tw.on("tweet", (tweet) => {
     io.emit("tweet", tweet);
   });
