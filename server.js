@@ -70,7 +70,7 @@ module.exports = async () => {
       }`
     );
   });
-  tw.track("javascript");
+  tw.track("727");
   tw.track("aireu");
   tw.on("tweet", (tweet) => {
     io.emit("tweet", tweet);
