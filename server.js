@@ -72,6 +72,7 @@ module.exports = async () => {
   });
   tw.track("727");
   tw.track("aireu");
+  tw.track("WYSI");
   tw.on("tweet", (tweet) => {
     io.emit("tweet", tweet);
   });
